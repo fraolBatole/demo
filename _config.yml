@@ -52,7 +52,7 @@ static_files:
   extname: pdf
 
 scholar:
-  source: .
+  source: jekyll-scholar
 # Plugins
 plugins:
   - jekyll-paginate
