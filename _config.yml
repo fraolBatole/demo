@@ -18,7 +18,7 @@ email: hridesh@iastate.edu
 description: >
   TODO
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://design.cs.iastate.edu"
+url: "https://demo.github.io/"
 
 # Build settings
 markdown: kramdown
@@ -29,6 +29,7 @@ exclude:
   - _scripts
   - _citation_styles
   - README.md
+
 
 collections:
   papers:  # Declare the `papers` collection, and output a page for every item.
@@ -52,5 +53,11 @@ static_files:
 
 scholar:
   source: .
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-scholar
 
-gems: ['jekyll/scholar']
+whitelist:
+  - jekyll-paginate
+  - jekyll-scholar
