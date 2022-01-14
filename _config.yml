@@ -52,12 +52,12 @@ static_files:
   extname: pdf
 
 scholar:
-  source: jekyll-scholar
+  source: jekyll/scholar'
 # Plugins
 plugins:
   - jekyll-paginate
-  - jekyll-scholar
+  - jekyll/scholar'
 
 whitelist:
   - jekyll-paginate
-  - jekyll-scholar
+  - jekyll/scholar
