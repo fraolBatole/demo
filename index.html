@@ -1,0 +1,52 @@
+---
+title: Laboratory for Software Design
+layout: default
+highlighted_papers:
+  - ICSE-22a
+  - ICSE-22b
+  - ICSE-22c
+  - ICSE-22d
+  - ESEC-FSE-20b
+  - ESEC-FSE-20a
+  - ICSE-20a
+  - ICSE-20b
+  - ESEC-FSE-19
+  - FSE-18
+  - ICSE-18a
+  - ICSE-18b
+  - OOPSLA-17
+  - ICSE-NIER-17a
+  - ICSE-15a
+  - TOSEM-15
+  - ICSE-15b
+  - OOPSLA16
+  - ECOOP-15
+  - OOPSLA-15
+---
+
+<main class="container">
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            {% include home_page/carousel.html %}
+          </div>
+          <br />
+
+          <div class="col-12 col-md-6">
+            {% include home_page/highlighted_papers.html
+                       highlighted_papers=page.highlighted_papers %}
+          </div>
+
+          <div class="col-12 col-md-6">
+            {% include home_page/recent_news.html %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+</main>

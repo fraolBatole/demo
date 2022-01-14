@@ -1,0 +1,87 @@
+---
+layout: page
+---
+
+<style>
+div .member-images, .alumni-images {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: flex-start;
+}
+.member-image, .alumni-image {
+  font-size: 16px;
+  display: inline-block;
+  max-width: 130px;
+  object-fit: cover;
+  margin: 0px 4px;
+}
+
+@media screen and (max-width: 443px){
+  .member-image, .alumni-image {
+    margin: 0px calc((100% - 260px)/4);
+  }
+}
+
+a {
+  color: inherit;
+}
+
+.crop-image {
+  max-height: 130px;
+  object-fit: cover;
+  max-width: 100%;
+  border: 1px solid black;
+}
+
+</style>
+
+<h2>Current Lab Members</h2>
+
+<div class="member-images">
+  {% for member in site.data.members %}
+    <a class="member-image {{member.name}}" href="{{member.site}}">
+      <figure>
+        <!-- All members have a site listed-->
+        {% if member.img %}
+          <img class="crop-image" src="/img/people/{{member.img}}" alt="Image of {{member.name}}">
+        {% else %}
+          <img class="crop-image" src="/img/people/blank.png" alt="Image of {{member.name}} not found">
+        {% endif %}
+        <!--All members have a site listed-->
+        <figcaption>
+          {{member.name}}
+          {% if member.status %}
+            [{{ member.status }}]
+          {% endif %}
+        </figcaption>
+      </figure>
+    </a>
+  {% endfor %}
+</div>
+
+<h2>Lab Alumni</h2>
+
+<div class="alumni-images">
+  {% for alumni in site.data.alumni %}
+    {% if alumni.site %}
+    <a class="alumni-image {{alumni.name}}" href="{{alumni.site}}">
+    {% else %}
+    <a class="alumni-image {{alumni.name}}">
+    {% endif %}
+      <figure>
+        {% if alumni.img %}
+          <img class="crop-image" src="/img/people/{{alumni.img}}" alt="Image of {{alumni.name}}">
+        {% else %}
+          <img class="crop-image" src="/img/people/blank.png" alt="Image of {{alumni.name}} not found">
+        {% endif %}
+        <!--All members have a site listed-->
+        <figcaption>
+          {{alumni.name}}
+          {% if alumni.status %}
+            [{{ alumni.status }}]
+          {% endif %}
+        </figcaption>
+      </figure>
+    </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,14 @@
+---
+---
+
+{% include_relative includes/template/headTop.htm %}
+
+{% include_relative includes/template/headBottom.htm %}
+
+<!-- Text for the actual webpage start -->
+
+{% include_relative pc.html %}
+
+<!-- Text for the actual webpage end -->
+
+{% include_relative includes/template/footer.htm %}
