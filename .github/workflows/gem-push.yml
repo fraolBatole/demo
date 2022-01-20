@@ -21,18 +21,26 @@ jobs:
       with:
         ruby-version: 2.6.x
 
+    - name: Build Jekyll site
+      run: |
+        set -xo pipefail
+        rm -rf _site/*
+        gem install bundler
+        bundle install
+        bundle exec jekyll build
+        cp CNAME _site/CNAME
+        
     - name: Deploy
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
         set -xo pipefail
-        git config --local user.email "fraolahm@gmail.com"
-        git config --local user.name "fraolbatole"
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git checkout master
         ls -Q | grep -v _site | xargs rm -rf
         mv _site/* .
         rm -rf _site
-        rm -rf .jekyll-cache
         [[ -n "$(git status --porcelain)" ]] || exit 0
         git add .
         git commit -m "Build $(git rev-parse source | grep -o '^.\{10\}')"
