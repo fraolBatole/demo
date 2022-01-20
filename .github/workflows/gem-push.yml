@@ -32,10 +32,9 @@ jobs:
         
     - name: Deploy
       env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
         set -xo pipefail
-        echo ${GITHUB_TOKEN}
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git checkout master
