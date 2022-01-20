@@ -35,8 +35,8 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
         set -xo pipefail
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git checkout master
         ls -Q | grep -v _site | xargs rm -rf
         mv _site/* .
