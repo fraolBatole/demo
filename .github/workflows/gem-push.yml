@@ -1,26 +1,22 @@
-name: Ruby Gem
+name: Build
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+    - source
 
 jobs:
   build:
-    name: Build + Publish
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        ref: source
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-
     - name: Build Jekyll site
       run: |
         set -xo pipefail
@@ -29,7 +25,6 @@ jobs:
         bundle install
         bundle exec jekyll build
         cp CNAME _site/CNAME
-        
     - name: Deploy
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
