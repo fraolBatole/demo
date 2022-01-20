@@ -30,7 +30,7 @@ jobs:
         bundle exec jekyll build
         cp CNAME _site/CNAME
         
-    - name: Deploy
+    - name: Commit files
       env:
         GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
       run: |
@@ -44,4 +44,9 @@ jobs:
         [[ -n "$(git status --porcelain)" ]] || exit 0
         git add .
         git commit -m "Build $(git rev-parse source | grep -o '^.\{10\}')"
-        git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
